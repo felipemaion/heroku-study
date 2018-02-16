@@ -71,7 +71,7 @@ MESSAGE_TYPES_LIST = [
 # SECURITY WARNING: keep the secret key used in production secret! And don't use debug=True in production!
 SECRET_KEY = 'imasecret'
 DEBUG = True
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["fierce-inlet-88907.herokuapp.com"]
 
 # Application definition
 INSTALLED_APPS = [
