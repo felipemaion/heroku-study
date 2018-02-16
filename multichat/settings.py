@@ -11,14 +11,25 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 """
 
 import os
-from redisify import redisify
+import urlparse
 
-CACHES = redisify(default='redis://localhost')
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ##### Channels-specific settings
+redis_url = urlparse.urlparse(os.environ.get('REDIS_URL'))
+CACHES = {
+    "default": {
+         "BACKEND": "redis_cache.RedisCache",
+         "LOCATION": "{0}:{1}".format(redis_url.hostname, redis_url.port),
+         "OPTIONS": {
+             "PASSWORD": redis_url.password,
+             "DB": 0,
+         }
+    }
+}
+
 
 redis_host = os.environ.get('REDIS_HOST', 'localhost')
 
