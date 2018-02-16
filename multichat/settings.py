@@ -27,6 +27,10 @@ CHANNEL_LAYERS = {
          #     "PASSWORD": redis_url.password,
          #     "DB": 0,
          # }
+         "CONFIG": {
+            "hosts": [(redis_url.hostname, redis_url.port)],
+        }
+
     }
 }
 
@@ -39,9 +43,9 @@ CHANNEL_LAYERS = {
 #     "default": {
 #         # This example app uses the Redis channel layer implementation channels_redis
 #         "BACKEND": "channels_redis.core.RedisChannelLayer",
-#         "CONFIG": {
-#             "hosts": [(redis_host, 6379)],
-#         },
+        "CONFIG": {
+            "hosts": [(redis_host, 6379)],
+        },
 #     },
 # }
 
