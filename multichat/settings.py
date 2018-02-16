@@ -18,20 +18,28 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ##### Channels-specific settings
-redis_url = urlparse(os.environ.get('REDIS_URL'))
+# redis_url = urlparse(os.environ.get('REDIS_URL'))
+# CHANNEL_LAYERS = {
+#     "default": {
+#          "BACKEND": "channels_redis.core.RedisChannelLayer", #"redis_cache.RedisCache",
+#          "LOCATION": "{0}:{1}".format(redis_url.hostname, redis_url.port),
+#          "CONFIG": {"hosts": [(redis_url.hostname, redis_url.port)],},
+#          "OPTIONS": {
+#              "PASSWORD": redis_url.password,
+#              "DB": 0,
+#          }
+#     }
+# }
+
 CHANNEL_LAYERS = {
     "default": {
-         "BACKEND": "channels_redis.core.RedisChannelLayer", #"redis_cache.RedisCache",
-         "LOCATION": "{0}:{1}".format(redis_url.hostname, redis_url.port),
-         "CONFIG": {"hosts": [(redis_url.hostname, redis_url.port)],},
-         "OPTIONS": {
-             "PASSWORD": redis_url.password,
-             "DB": 0,
-         }
-    }
+        "BACKEND": "asgi_redis.RedisChannelLayer",
+        "CONFIG": {
+            "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+        },
+        # "ROUTING": "multichat.routing.channel_routing",
+    },
 }
-
-
 # redis_host = os.environ.get('REDIS_HOST', 'localhost')
 
 # Channel layer definitions

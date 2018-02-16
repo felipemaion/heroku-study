@@ -6,3 +6,4 @@ psycopg2
 whitenoise
 django-redis-cache
 urllib3
+asgi_redis
