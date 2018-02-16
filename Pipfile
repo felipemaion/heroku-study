@@ -6,10 +6,11 @@ verify_ssl = true
 
 [packages]
 
-django = "*"
+django = 2.0
 gunicorn = "*"
 django-heroku = "*"
-
+channels~=2.0,>=2.0.2
+channels_redis~=2.0
 
 [requires]
 
