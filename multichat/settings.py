@@ -40,7 +40,7 @@ CHANNEL_LAYERS = {
         # This example app uses the Redis channel layer implementation channels_redis
         "BACKEND": "channels_redis.core.RedisChannelLayer",
         "CONFIG": {
-            "hosts": [(redis_host, 6379)],
+            "hosts": [(redis_url.hostname, redis_url.port)],   # [(redis_host, 6379)],
         },
     },
 }
