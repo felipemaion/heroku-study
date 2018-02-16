@@ -11,14 +11,14 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 """
 
 import os
-import urlparse
+from urllib.parse import urlparse
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 ##### Channels-specific settings
-redis_url = urlparse.urlparse(os.environ.get('REDIS_URL'))
+redis_url = urlparse(os.environ.get('REDIS_URL'))
 CACHES = {
     "default": {
          "BACKEND": "redis_cache.RedisCache",
