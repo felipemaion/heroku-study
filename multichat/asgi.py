@@ -8,5 +8,7 @@ import django
 from channels.routing import get_default_application
 
 os.environ.setdefault("DJANGO_SETTINGS_MODULE", "multichat.settings")
+# os.environ.setdefault("DJANGO_SETTINGS_MODULE", "multichat.settings")
+# os.environ['DJANGO_SETTINGS_MODULE'] = "multichat.settings"
 django.setup()
 application = get_default_application()

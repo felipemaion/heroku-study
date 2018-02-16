@@ -71,7 +71,7 @@ MESSAGE_TYPES_LIST = [
 # SECURITY WARNING: keep the secret key used in production secret! And don't use debug=True in production!
 SECRET_KEY = 'imasecret'
 DEBUG = True
-ALLOWED_HOSTS = ["fierce-inlet-88907.herokuapp.com"]
+ALLOWED_HOSTS = ["127.0.0.1", "fierce-inlet-88907.herokuapp.com"]
 
 # Application definition
 INSTALLED_APPS = [
@@ -150,9 +150,17 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/dev/howto/static-files/
 
+# STATIC_URL = '/static/'
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static"),
+# ]
+
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
+
+# Extra places for collectstatic to find static files.
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
+    os.path.join(BASE_DIR, 'static'),
 ]
 
 # ie if Heroku server
