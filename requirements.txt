@@ -5,4 +5,4 @@ dj-database-url
 psycopg2
 whitenoise
 django-redis-cache
-urlparse
+urllib3
