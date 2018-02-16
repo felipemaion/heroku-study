@@ -1,1 +1,1 @@
-web: python manage.py runserver
+web: daphne multichat.asgi --port $PORT --bind 0.0.0.0 -v2
