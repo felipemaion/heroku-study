@@ -3,3 +3,4 @@ channels~=2.0,>=2.0.2
 channels_redis~=2.0
 dj-database-url 
 psycopg2
+whitenoise
