@@ -24,6 +24,7 @@ application = ProtocolTypeRouter({
         URLRouter([
             # URLRouter just takes standard Django path() or url() entries.
             path("chat/stream/", ChatConsumer),
+            route('http.request', StaticFilesConsumer()),
         ]),
     ),
 
