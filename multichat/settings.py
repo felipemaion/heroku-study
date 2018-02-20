@@ -39,8 +39,8 @@ CHANNEL_LAYERS = {
          "OPTIONS": {
              "PASSWORD": redis_url.password,
              "DB": 0,
-         }
-         "CONFIG": {"hosts": [(redis_url.hostname, redis_url.port)],},
+         },
+         "CONFIG": {"hosts": [(redis_url.hostname, redis_url.port)]},
     }
 }
 
