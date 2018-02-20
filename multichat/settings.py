@@ -30,7 +30,6 @@ p("###################################")
 p(redis_url)
 p(redis_url.hostname)
 p(redis_url.port)
-p(redis_url.user)
 p(redis_url.password)
 p("###################################")
 CHANNEL_LAYERS = {
@@ -38,7 +37,7 @@ CHANNEL_LAYERS = {
          "BACKEND": "channels_redis.core.RedisChannelLayer",#"channels_redis.core.RedisChannelLayer", #"redis_cache.RedisCache",
          "LOCATION": "{0}:{1}".format(redis_url.hostname, redis_url.port),
          "OPTIONS": {
-             "USER": redis_url.user,
+             "USER": "h",
              "PASSWORD": redis_url.password,
              "DB": 0,
          },
