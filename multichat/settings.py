@@ -21,7 +21,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 redis_url = urlparse(os.environ.get('REDIS_URL'))
 CHANNEL_LAYERS = {
     "default": {
-         "BACKEND": "redis_cache.RedisCache",#"channels_redis.core.RedisChannelLayer", #"redis_cache.RedisCache",
+         "BACKEND": "channels_redis.core.RedisChannelLayer",#"channels_redis.core.RedisChannelLayer", #"redis_cache.RedisCache",
          "LOCATION": "{0}:{1}".format(redis_url.hostname, redis_url.port),
          #"CONFIG": {"hosts": [(redis_url.hostname, redis_url.port)],},
          "OPTIONS": {
