@@ -25,25 +25,36 @@ def p(*args):
 
 ##### Channels-specific settings
 redis_url = urlparse(os.environ.get('REDIS_URL'))
-redis_host = os.environ.get('REDIS_HOST', 'localhost')
-p("###################################")
-p(redis_url)
-p(redis_url.hostname)
-p(redis_url.port)
-p(redis_url.password)
-p("###################################")
+
 CHANNEL_LAYERS = {
     "default": {
          "BACKEND": "channels_redis.core.RedisChannelLayer",#"channels_redis.core.RedisChannelLayer", #"redis_cache.RedisCache",
          "LOCATION": "{0}:{1}".format(redis_url.hostname, redis_url.port),
          "OPTIONS": {
-             "USER": "h",
              "PASSWORD": redis_url.password,
              "DB": 0,
          },
          "CONFIG": {"hosts": [(redis_url.hostname, redis_url.port)]},
     }
 }
+CACHE = {
+    "default": {
+         "BACKEND": "channels_redis.core.RedisChannelLayer",#"channels_redis.core.RedisChannelLayer", #"redis_cache.RedisCache",
+         "LOCATION": "{0}:{1}".format(redis_url.hostname, redis_url.port),
+         "OPTIONS": {
+             "PASSWORD": redis_url.password,
+             "DB": 0,
+         },
+         "CONFIG": {"hosts": [(redis_url.hostname, redis_url.port)]},
+    }
+}
+
+p("###################################")
+p(redis_url)
+p(redis_url.hostname)
+p(redis_url.port)
+p(redis_url.password)
+p("###################################")
 
 # redis_host = os.environ.get('REDIS_HOST', 'localhost')
 
