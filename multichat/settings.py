@@ -30,16 +30,17 @@ p("###################################")
 p(redis_url)
 p(redis_url.hostname)
 p(redis_url.port)
+p(redis_url.password)
 p("###################################")
 CHANNEL_LAYERS = {
     "default": {
          "BACKEND": "channels_redis.core.RedisChannelLayer",#"channels_redis.core.RedisChannelLayer", #"redis_cache.RedisCache",
          "LOCATION": "{0}:{1}".format(redis_url.hostname, redis_url.port),
-         "CONFIG": {"hosts": [(redis_url.hostname, redis_url.port)],},
          "OPTIONS": {
              "PASSWORD": redis_url.password,
              "DB": 0,
          }
+         "CONFIG": {"hosts": [(redis_url.hostname, redis_url.port)],},
     }
 }
 
