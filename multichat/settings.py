@@ -21,7 +21,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 redis_url = urlparse(os.environ.get('REDIS_URL'))
 CHANNEL_LAYERS = {
     "default": {
-         "BACKEND": "multichat.routing.application",#"channels_redis.core.RedisChannelLayer", #"redis_cache.RedisCache",
+         "BACKEND": "redis_cache.RedisCache",#"channels_redis.core.RedisChannelLayer", #"redis_cache.RedisCache",
          "LOCATION": "{0}:{1}".format(redis_url.hostname, redis_url.port),
          #"CONFIG": {"hosts": [(redis_url.hostname, redis_url.port)],},
          "OPTIONS": {
@@ -31,15 +31,6 @@ CHANNEL_LAYERS = {
     }
 }
 
-# CHANNEL_LAYERS = {
-#     "default": {
-#         "BACKEND": "multichat.routing.application",
-#         "CONFIG": {
-#             "hosts": [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
-#         },
-#         # "ROUTING": "multichat.routing.channel_routing",
-#     },
-# }
 # redis_host = os.environ.get('REDIS_HOST', 'localhost')
 
 # Channel layer definitions
