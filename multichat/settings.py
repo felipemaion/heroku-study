@@ -31,7 +31,6 @@ p(redis_url)
 p(redis_url.hostname)
 p(redis_url.port)
 p(redis_url.password)
-p(redis_url.db)
 p("###################################")
 CHANNEL_LAYERS = {
     "default": {
