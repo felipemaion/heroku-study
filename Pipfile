@@ -16,6 +16,7 @@ psycopg2 = "*"
 whitenoise
 django-redis-cache
 urllib3
+asgiref
 
 [requires]
 
