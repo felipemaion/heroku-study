@@ -20,7 +20,7 @@ STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 # logging helper
 def p(*args):
-  print (args[0] % (len(args) > 1 and args[1:] or []))
+  print (*args)
   sys.stdout.flush()
 
 ##### Channels-specific settings
