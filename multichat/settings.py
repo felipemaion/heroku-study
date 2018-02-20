@@ -28,6 +28,9 @@ redis_url = urlparse(os.environ.get('REDIS_URL'))
 redis_host = os.environ.get('REDIS_HOST', 'localhost')
 p("###################################")
 p(redis_url)
+p(redis_url.hostname)
+p(redis_url.port)
+p("###################################")
 CHANNEL_LAYERS = {
     "default": {
          "BACKEND": "channels_redis.core.RedisChannelLayer",#"channels_redis.core.RedisChannelLayer", #"redis_cache.RedisCache",
