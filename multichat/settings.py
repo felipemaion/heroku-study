@@ -11,17 +11,23 @@ https://docs.djangoproject.com/en/dev/ref/settings/
 """
 
 import os
+import sys
 from urllib.parse import urlparse
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
+# logging helper
+def p(*args):
+  print args[0] % (len(args) > 1 and args[1:] or [])
+  sys.stdout.flush()
+
 ##### Channels-specific settings
 redis_url = urlparse(os.environ.get('REDIS_URL'))
 redis_host = os.environ.get('REDIS_HOST', 'localhost')
-print("###################################")
-print(redis_url)
+p("###################################")
+p(redis_url)
 CHANNEL_LAYERS = {
     "default": {
          "BACKEND": "channels_redis.core.RedisChannelLayer",#"channels_redis.core.RedisChannelLayer", #"redis_cache.RedisCache",
