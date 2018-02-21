@@ -37,17 +37,7 @@ CHANNEL_LAYERS = {
          "CONFIG": {"hosts": [(redis_url.hostname, redis_url.port)]},
     }
 }
-CACHE = {
-    "default": {
-         "BACKEND": "channels_redis.core.RedisChannelLayer",#"channels_redis.core.RedisChannelLayer", #"redis_cache.RedisCache",
-         "LOCATION": "{0}:{1}".format(redis_url.hostname, redis_url.port),
-         "OPTIONS": {
-             "PASSWORD": redis_url.password,
-             "DB": 0,
-         },
-         "CONFIG": {"hosts": [(redis_url.hostname, redis_url.port)]},
-    }
-}
+
 
 p("###################################")
 p(redis_url)
